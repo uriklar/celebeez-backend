@@ -1,7 +1,7 @@
 module Api
   module V1
     class CelebsController < ApplicationController
-      before_action :set_celeb, only: [:show, :edit, :update, :destroy]
+      before_action :set_celeb, only: [:show, :update, :destroy]
 
       respond_to :json
       # GET /celebs
@@ -13,7 +13,7 @@ module Api
       # GET /celebs/1
       # GET /celebs/1.json
       def show
-        respond_with @celeb
+        respond_with @celeb.to_json(:include => :items)
       end
 
       # POST /celebs
